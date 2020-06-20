@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\login",
+    "\\login\\__pycache__",
+    "\\shoeshopping",
+    "\\static",
+    "\\static\\scss",
+    "\\static\\scss\\theme",
+    "\\templates"
+  ],
+  "SelectedNode": "\\static\\scss\\theme\\_variables.scss",
+  "PreviewInSolutionExplorer": false
+}

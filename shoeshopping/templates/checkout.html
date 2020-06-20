@@ -1,0 +1,181 @@
+{% load static %} {% static 'img' as BASEURL %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{%static 'img/fav.png'%}">
+    <!-- Author Meta -->
+    <meta name="author" content="CodePixar">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Shoe Shop</title>
+    <!--
+		CSS
+		============================================= -->
+    <link rel="stylesheet" href="{% static 'css/linearicons.css'%}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css'%}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css'%}">
+    <link rel="stylesheet" href="{% static 'css/nouislider.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/ion.rangeSlider.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/ion.rangeSlider.skinFlat.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css'%}">
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+    <script src=""></script>
+</head>
+
+<body>
+    <header class="header_area sticky-header">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light main_box">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <a class="navbar-brand" href="index.html"><img src="{% static 'img/logo.png'%}" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <!span class="icon-bar"></span>
+                    <!span class="icon-bar"></span>
+                </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!div class="row">
+                        <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/tracker">track</a></li>
+                            {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link">Hey,{{user.first_name}}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+                            {% else %}
+                            <li class="nav-item"><a class="nav-link" href="/login">login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="register">Register</a></li>
+                            {% endif %}
+                            <li class="nav-item"><a class="nav-link" href="contactus">Contact</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="/checkout">Checkout</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+        </div>
+        </nav>
+        </div>
+    </header>
+    <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Checkout</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="checkout">Checkout</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+    <div class="Container">
+        <div class="col my-4">
+            <h3>My Awesome cart Express checkout Review Your Cart Items</h3>
+            <div>
+                <ul class="list-group" id="items">
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="col my-4">
+            <h3>Enter Address & other details</h3>
+            <form method="POST" action="checkout">
+                {% csrf_token%}
+                <input type="hidden" name="itemjson" id="itemjson">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="address1" name="address1" placeholder="1234 Main St">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">Address Line 2</label>
+                    <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control" id="city" name="city" placeholder="Enter City">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">State</label>
+                        <input type="text" class="form-control" id="state" name="state" placeholder="Enter State">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputZip">Zip</label>
+                        <input type="text" class="form-control" id="Zipcode" name="zipcode">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputZip">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Phone Number">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Place order</button>
+            </form>
+        </div>
+    </div>
+    {% for message in messages%}
+    <h3>{{message}}</h3>
+
+    {% endfor %}
+    <!script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+        if (localStorage.getItem('cart') == null) {
+            var cart = {};
+        } else {
+            cart = JSON.parse(localStorage.getItem('cart'));
+        }
+        var sum = 0
+        for (item in cart) {
+            let name = cart[item][1]
+            let qty = cart[item][0]
+            sum = sum + qty
+            mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                    ${name}
+                    <span class="badge badge-primary badge-pill">${qty}</span>
+              </li>`
+            $('#items').append(mystr)
+        }
+        document.getElementById('cart').innerHTML = sum;
+        $('#itemjson').val(JSON.stringify(cart)); { %
+            if thank %
+        }
+        alert('Thank For Ordering with us. Your order id is {{id}}. Use it to Track your order')
+        localStorage.clear()
+        document.location = "/" { % endif %
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{%static 'img/fav.png' %}">
+    <!-- Author Meta -->
+    <meta name="author" content="CodePixar">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Shoe shop</title>
+    <!--
+			CSS
+			============================================= -->
+    <link rel="stylesheet" href="{%static 'css/linearicons.css' %}">
+    <link rel="stylesheet" href="{%static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{%static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{%static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{%static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{%static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{%static 'css/nouislider.min.css' %}">
+    <link rel="stylesheet" href="{%static 'css/ion.rangeSlider.css' %}" />
+    <link rel="stylesheet" href="{%static 'css/ion.rangeSlider.skinFlat.css' %}" />
+    <link rel="stylesheet" href="{%static 'css/main.css' %}">
+</head>
+
+<body>
+
+    <!-- Start Header Area -->
+
+    <!-- Start Header Area -->
+    <header class="header_area sticky-header">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light main_box">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <a class="navbar-brand" href="/"><img src="{% static 'img/logo.png'%}" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <!span class="icon-bar"></span>
+                        <!span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!div class="row">
+                        <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="/tracker">track</a></li>
+                            {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link">Hey,{{user.first_name}}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+                            {% else %}
+                            <li class="nav-item"><a class="nav-link" href="/login">login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="register">Register</a></li>
+                            {% endif %}
+                            <li class="nav-item"><a class="nav-link" href="contactus">Contact</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+        </div>
+        </nav>
+        </div>
+    </header>
+    <!-- End Header Area -->
+
+    <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Product Details Page</h1>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+
+    <!--================Single Product Area =================-->
+    <div class="product_image_area">
+        <div class="container">
+            <div class="row s_product_inner">
+                <div class="col-lg-6">
+                    <div class="s_Product_carousel">
+                        <div class="single-prd-item">
+                            <img class="img-fluid" src="{{singleshoe.img.url}}" alt="">
+                        </div>
+                        <div class="single-prd-item">
+                            <img class="img-fluid" src="{{singleshoe.img2.url}}" alt="">
+                        </div>
+                        <div class="single-prd-item">
+                            <img class="img-fluid" src="{{singleshoe.img3.url}}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="s_product_text">
+                        <h3>{{singleshoe.name}}</h3>
+                        <h2>{{singleshoe.price1}}</h2>
+                        <ul class="list">
+                            <li><a class="active" href="#"><span>Category</span> : Household</a></li>
+                            <li><a href="#"><span>Availibility</span> : In Stock</a></li>
+                        </ul>
+                        <p></p>
+                        <div class="product_count">
+                            <label for="qty">Quantity:</label>
+                            <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                        </div>
+                        <div class="card_area d-flex align-items-center">
+                            <a class="primary-btn" href="#">Buy Now</a>
+                            <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+                            <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--================End Single Product Area =================-->
+
+    <!--================Product Description Area =================-->
+    <section class="product_description_area">
+        <div class="container-fluid">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Description</a>
+                </li>
+
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h5>Sole</h5>
+                                    </td>
+                                    <td>
+                                        <h5>{{singleshoe.sole}}</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Closure</h5>
+                                    </td>
+                                    <td>
+                                        <h5>{{singleshoe.closure}}</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Material</h5>
+                                    </td>
+                                    <td>
+                                        <h5>{{singleshoe.materialtype}}</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Life Style</h5>
+                                    </td>
+                                    <td>
+                                        <h5>{{singleshoe.lifestyle}}</h5>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!--================End Product Description Area =================-->
+
+
+    <script src="{%static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="{%static 'js/vendor/bootstrap.min.js' %}"></script>
+    <script src="{%static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{%static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{%static 'js/jquery.sticky.js' %}"></script>
+    <script src="{%static 'js/nouislider.min.js' %}"></script>
+    <script src="{%static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{%static 'js/owl.carousel.min.js' %}"></script>
+    <!--gmaps Js-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="{%static 'js/gmaps.min.js' %}"></script>
+    <script src="{%static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
