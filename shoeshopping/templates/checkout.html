@@ -91,7 +91,8 @@
             <div>
                 <ul class="list-group" id="items">
 
-                </ul>
+                </ul>	
+
             </div>
         </div>
 
@@ -165,16 +166,16 @@
                     ${name}
                     <span class="badge badge-primary badge-pill">${qty}</span>
               </li>`
+            console.log(mystr);
             $('#items').append(mystr)
         }
-        document.getElementById('cart').innerHTML = sum;
-        $('#itemjson').val(JSON.stringify(cart)); { %
-            if thank %
-        }
+        // document.getElementById('cart').innerHTML = sum;
+        $('#itemjson').val(JSON.stringify(cart)); 
+        {% if thank %}
         alert('Thank For Ordering with us. Your order id is {{id}}. Use it to Track your order')
         localStorage.clear()
-        document.location = "/" { % endif %
-        }
+        document.location = "/" 
+        {% endif %}
     </script>
 </body>
 
